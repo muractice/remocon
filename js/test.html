@@ -1,0 +1,25 @@
+<div id="app">
+  {{ info }}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+var app = new Vue(
+  {
+    el:'#app',
+    data(){
+      return {
+        info:null
+      }
+    },
+    mounted(){
+      console.log("hoge")
+      axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => {this.info = response.data.bpi; console.log(response)})      
+//      .then(response => (this.info = response))
+    }
+  }
+)
+</script>
